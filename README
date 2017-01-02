@@ -1,0 +1,20 @@
+To take a data run:
+
+modify the parameters in the SC.h file the ones that don't do anything are labeled as such (they used to do stuff in previous versions but are no longer needed)
+
+modify the MAKESC.sh file to tell it where to send the data (replace what is currently called data999 to the file you want). This file will store data that SCfilein.c will be able to read and turn into either all particle locations and orientations or the Potential Energy and Pressure on the walls, which we can plot to find the critical packing fraction.
+
+run MAKESC.sh and send the data to another file (the data that you send to this file will be:
+	packing fraction, potential energy, wall pressure
+
+this is to check the values against the values calculated in SCfilein.c, they will be a little different, but they seem to make sense at least
+
+the program sends basic data from iteration to iteration to the terminal so you can see how the data run is "doing"
+
+^C out of the program when it seems to be well past the critical packing fraction (watch the pressure value), I couldn't find a way to determine the critical packing fraction without looking at it myself, if you don't do this it will go until it hits a packing fraction of 1 but letting it do that will take a lot more time
+
+To analyze the data:
+
+Honestly I think my comments in SCfilein.c were pretty good, so go there first but if it's still unclear just email me
+
+You can also use SCFinalAnalysis.py to get the orientations for each bin and the number of particles in each bin (where the bins are distances from the center of the container)
